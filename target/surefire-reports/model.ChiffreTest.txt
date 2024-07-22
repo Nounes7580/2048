@@ -1,0 +1,64 @@
+-------------------------------------------------------------------------------
+Test set: model.ChiffreTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 0.052 sec <<< FAILURE!
+model.ChiffreTest.testSplit8()  Time elapsed: 0.032 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:40)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:35)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:162)
+	at model.ChiffreTest.testSplit8(ChiffreTest.java:83)
+
+model.ChiffreTest.testToString32()  Time elapsed: 0.015 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <  32> but was: <    >
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at model.ChiffreTest.testToString32(ChiffreTest.java:38)
+
+model.ChiffreTest.testToString2()  Time elapsed: 0 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <   2> but was: <   4>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at model.ChiffreTest.testToString2(ChiffreTest.java:28)
+
+model.ChiffreTest.testSplit()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:40)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:35)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:162)
+	at model.ChiffreTest.testSplit(ChiffreTest.java:66)
+
+model.ChiffreTest.testToString1024()  Time elapsed: 0 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1024> but was: <    >
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at model.ChiffreTest.testToString1024(ChiffreTest.java:58)
+
+model.ChiffreTest.testSplit4()  Time elapsed: 0 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:40)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:35)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:162)
+	at model.ChiffreTest.testSplit4(ChiffreTest.java:75)
+
+model.ChiffreTest.testToString256()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: < 256> but was: <    >
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at model.ChiffreTest.testToString256(ChiffreTest.java:48)
+

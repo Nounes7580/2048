@@ -1,0 +1,275 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Grid</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Grid (model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Grid</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    92.3%
+  </span>
+  <span class="absValue">
+    (12/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    89%
+  </span>
+  <span class="absValue">
+    (73/ 82)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package model;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.LinkedList;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; *
+<i>7</i>&nbsp; * @author younes
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;public class Grid {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    private final int size;
+<i>12</i>&nbsp;    private Chiffre[][] grille;
+<i>13</i>&nbsp;/**
+<i>14</i>&nbsp; * constructor of grid and allows you to give the size of the game
+<i>15</i>&nbsp; */
+<b class="fc"><i>16</i>&nbsp;    public Grid() {</b>
+<b class="fc"><i>17</i>&nbsp;        size = 4;</b>
+<b class="fc"><i>18</i>&nbsp;        grille = new Chiffre[size][size];</b>
+<i>19</i>&nbsp;
+<b class="fc"><i>20</i>&nbsp;        for (int i = 0; i &lt; size; i++) {</b>
+<b class="fc"><i>21</i>&nbsp;            for (int j = 0; j &lt; size; j++) {</b>
+<b class="fc"><i>22</i>&nbsp;                grille[i][j] = new Chiffre();</b>
+<i>23</i>&nbsp;            }
+<i>24</i>&nbsp;        }
+<b class="fc"><i>25</i>&nbsp;    }</b>
+<i>26</i>&nbsp;/**
+<i>27</i>&nbsp; * getter of constructor grid 
+<i>28</i>&nbsp; * 
+<i>29</i>&nbsp; * @return grille
+<i>30</i>&nbsp; */
+<i>31</i>&nbsp;    public Chiffre[][] getGrille() {
+<b class="nc"><i>32</i>&nbsp;        return grille;</b>
+<i>33</i>&nbsp;    }
+<i>34</i>&nbsp;/**
+<i>35</i>&nbsp; *  method that allows to show where it does not have a position to occupy
+<i>36</i>&nbsp; * @return listVide
+<i>37</i>&nbsp; */
+<i>38</i>&nbsp;    private LinkedList&lt;Position&gt; posEmpty() {
+<b class="fc"><i>39</i>&nbsp;        LinkedList&lt;Position&gt; listVide = new LinkedList&lt;&gt;();</b>
+<b class="fc"><i>40</i>&nbsp;        for (int i = 0; i &lt; size; i++) {</b>
+<b class="fc"><i>41</i>&nbsp;            for (int j = 0; j &lt; size; j++) {</b>
+<b class="fc"><i>42</i>&nbsp;                if (grille[i][j].getValeur() == 0) {</b>
+<b class="fc"><i>43</i>&nbsp;                    listVide.add(new Position(i, j));</b>
+<i>44</i>&nbsp;                }
+<i>45</i>&nbsp;            }
+<i>46</i>&nbsp;        }
+<b class="fc"><i>47</i>&nbsp;        return listVide;</b>
+<i>48</i>&nbsp;    }
+<i>49</i>&nbsp;/**
+<i>50</i>&nbsp; *  method of adding a new value to the game 
+<i>51</i>&nbsp; */
+<i>52</i>&nbsp;    public void newElement() {
+<b class="fc"><i>53</i>&nbsp;        LinkedList posEmpty = posEmpty();</b>
+<b class="fc"><i>54</i>&nbsp;        if (posEmpty.size() &gt; 0) {</b>
+<b class="fc"><i>55</i>&nbsp;            int index = (int) (Math.random() * (posEmpty.size()));</b>
+<b class="fc"><i>56</i>&nbsp;            Position pos = (Position) posEmpty.get(index);</b>
+<b class="fc"><i>57</i>&nbsp;            grille[pos.getX()][pos.getY()].split();</b>
+<i>58</i>&nbsp;        }
+<b class="fc"><i>59</i>&nbsp;    }</b>
+<i>60</i>&nbsp;/**
+<i>61</i>&nbsp; * method that allows to move right
+<i>62</i>&nbsp; */
+<i>63</i>&nbsp;    public void moveRight() {
+<b class="fc"><i>64</i>&nbsp;        for (int i = 0; i &lt; size; i++) {</b>
+<b class="fc"><i>65</i>&nbsp;            for (int j = 0; j &lt; size; j++) {</b>
+<b class="fc"><i>66</i>&nbsp;                for (int k = j; k + 1 &lt; size &amp;&amp; grille[i][k + 1].getValeur() == 0; k++) {</b>
+<b class="fc"><i>67</i>&nbsp;                    grille[i][k + 1].setValeur(grille[i][k].getValeur());</b>
+<b class="fc"><i>68</i>&nbsp;                    grille[i][k].setValeur(0);</b>
+<i>69</i>&nbsp;                }
+<i>70</i>&nbsp;            }
+<i>71</i>&nbsp;        }
+<b class="fc"><i>72</i>&nbsp;    }</b>
+<i>73</i>&nbsp;/**
+<i>74</i>&nbsp; * method that allows to move left
+<i>75</i>&nbsp; */
+<i>76</i>&nbsp;    public void moveLeft() {
+<b class="fc"><i>77</i>&nbsp;        for (int i = 0; i &lt; size; i++) {</b>
+<b class="fc"><i>78</i>&nbsp;            for (int j = size - 1; j &gt;= 0; j--) {</b>
+<b class="fc"><i>79</i>&nbsp;                for (int k = j; k - 1 &gt;= 0 &amp;&amp; grille[i][k - 1].getValeur() == 0; k--) {</b>
+<b class="fc"><i>80</i>&nbsp;                    grille[i][k - 1].setValeur(grille[i][k].getValeur());</b>
+<b class="fc"><i>81</i>&nbsp;                    grille[i][k].setValeur(0);</b>
+<i>82</i>&nbsp;                }
+<i>83</i>&nbsp;            }
+<i>84</i>&nbsp;        }
+<b class="fc"><i>85</i>&nbsp;    }</b>
+<i>86</i>&nbsp;/**
+<i>87</i>&nbsp; * method that allows to move upwards
+<i>88</i>&nbsp; */
+<i>89</i>&nbsp;    public void moveTop() {
+<b class="fc"><i>90</i>&nbsp;        for (int i = size - 1; i &gt;= 0; i--) {</b>
+<b class="fc"><i>91</i>&nbsp;            for (int j = 0; j &lt; size; j++) {</b>
+<b class="fc"><i>92</i>&nbsp;                for (int k = i; k - 1 &gt;= 0 &amp;&amp; grille[k - 1][j].getValeur() == 0; k--) {</b>
+<b class="fc"><i>93</i>&nbsp;                    grille[k - 1][j].setValeur(grille[k][j].getValeur());</b>
+<b class="fc"><i>94</i>&nbsp;                    grille[k][j].setValeur(0);</b>
+<i>95</i>&nbsp;                }
+<i>96</i>&nbsp;            }
+<i>97</i>&nbsp;        }
+<b class="fc"><i>98</i>&nbsp;    }</b>
+<i>99</i>&nbsp;/**
+<i>100</i>&nbsp; * method that allows to move downwards
+<i>101</i>&nbsp; */
+<i>102</i>&nbsp;    public void moveBot() {
+<b class="fc"><i>103</i>&nbsp;        for (int i = size - 1; i &gt;= 0; i--) {</b>
+<b class="fc"><i>104</i>&nbsp;            for (int j = 0; j &lt; size; j++) {</b>
+<b class="fc"><i>105</i>&nbsp;                for (int k = i; k + 1 &lt; size &amp;&amp; grille[k + 1][j].getValeur() == 0; k++) {</b>
+<b class="fc"><i>106</i>&nbsp;                    grille[k + 1][j].setValeur(grille[k][j].getValeur());</b>
+<b class="fc"><i>107</i>&nbsp;                    grille[k][j].setValeur(0);</b>
+<i>108</i>&nbsp;                }
+<i>109</i>&nbsp;            }
+<i>110</i>&nbsp;        }
+<b class="fc"><i>111</i>&nbsp;    }</b>
+<i>112</i>&nbsp;/**
+<i>113</i>&nbsp; * method that allows to fuse right
+<i>114</i>&nbsp; */
+<i>115</i>&nbsp;    public void fuseRight() {
+<b class="fc"><i>116</i>&nbsp;        for (int i = 0; i &lt; size; i++) {</b>
+<b class="fc"><i>117</i>&nbsp;            for (int j = size - 1; j &gt;= 0; j--) {</b>
+<b class="fc"><i>118</i>&nbsp;                if (grille[i][j].getValeur() != 0 &amp;&amp; j + 1 &lt; size &amp;&amp; grille[i][j].getValeur() == grille[i][j + 1].getValeur()) {</b>
+<b class="nc"><i>119</i>&nbsp;                    grille[i][j + 1].split();</b>
+<b class="nc"><i>120</i>&nbsp;                    grille[i][j].setValeur(0);</b>
+<i>121</i>&nbsp;                }
+<i>122</i>&nbsp;            }
+<i>123</i>&nbsp;        }
+<b class="fc"><i>124</i>&nbsp;    }</b>
+<i>125</i>&nbsp;/**
+<i>126</i>&nbsp; * method that allows to fuse left
+<i>127</i>&nbsp; */
+<i>128</i>&nbsp;    public void fuseLeft() {
+<b class="fc"><i>129</i>&nbsp;        for (int i = 0; i &lt; size; i++) {</b>
+<b class="fc"><i>130</i>&nbsp;            for (int j = 0; j &lt; size; j++) {</b>
+<b class="fc"><i>131</i>&nbsp;                if (grille[i][j].getValeur() != 0 &amp;&amp; j - 1 &gt;= 0 &amp;&amp; grille[i][j].getValeur() == grille[i][j - 1].getValeur()) {</b>
+<b class="nc"><i>132</i>&nbsp;                    grille[i][j - 1].split();</b>
+<b class="nc"><i>133</i>&nbsp;                    grille[i][j].setValeur(0);</b>
+<i>134</i>&nbsp;                }
+<i>135</i>&nbsp;            }
+<i>136</i>&nbsp;        }
+<b class="fc"><i>137</i>&nbsp;    }</b>
+<i>138</i>&nbsp;/**
+<i>139</i>&nbsp; * method that allows to fuse downwards
+<i>140</i>&nbsp; */
+<i>141</i>&nbsp;    public void fuseBot() {
+<b class="fc"><i>142</i>&nbsp;        for (int i = size - 1; i &gt;= 0; i--) {</b>
+<b class="fc"><i>143</i>&nbsp;            for (int j = size - 1; j &gt;= 0; j--) {</b>
+<b class="fc"><i>144</i>&nbsp;                if (grille[i][j].getValeur() != 0 &amp;&amp; i + 1 &lt; size &amp;&amp; grille[i][j].getValeur() == grille[i + 1][j].getValeur()) {</b>
+<b class="nc"><i>145</i>&nbsp;                    grille[i + 1][j].split();</b>
+<b class="nc"><i>146</i>&nbsp;                    grille[i][j].setValeur(0);</b>
+<i>147</i>&nbsp;                }
+<i>148</i>&nbsp;            }
+<i>149</i>&nbsp;        }
+<b class="fc"><i>150</i>&nbsp;    }</b>
+<i>151</i>&nbsp;/**
+<i>152</i>&nbsp; * method that allows to fuse upwards
+<i>153</i>&nbsp; */
+<i>154</i>&nbsp;    public void fuseTop() {
+<b class="fc"><i>155</i>&nbsp;        for (int i = size - 1; i &gt;= 0; i--) {</b>
+<b class="fc"><i>156</i>&nbsp;            for (int j = 0; j &lt; size; j++) {</b>
+<b class="fc"><i>157</i>&nbsp;                if (grille[i][j].getValeur() != 0 &amp;&amp; i - 1 &gt;= 0 &amp;&amp; grille[i][j].getValeur() == grille[i - 1][j].getValeur()) {</b>
+<b class="nc"><i>158</i>&nbsp;                    grille[i - 1][j].split();</b>
+<b class="nc"><i>159</i>&nbsp;                    grille[i][j].setValeur(0);</b>
+<i>160</i>&nbsp;                }
+<i>161</i>&nbsp;            }
+<i>162</i>&nbsp;        }
+<b class="fc"><i>163</i>&nbsp;    }</b>
+<i>164</i>&nbsp;/**
+<i>165</i>&nbsp; * 
+<i>166</i>&nbsp; * method that sees when we lose
+<i>167</i>&nbsp; * @return isOver 
+<i>168</i>&nbsp; */
+<i>169</i>&nbsp;    public boolean gameOver() {
+<b class="fc"><i>170</i>&nbsp;        boolean isOver = true;</b>
+<b class="fc"><i>171</i>&nbsp;        for (int i = 0; i &lt; size; i++) {</b>
+<b class="fc"><i>172</i>&nbsp;            for (int j = 0; j &lt; size; j++) {</b>
+<b class="fc"><i>173</i>&nbsp;                if (grille[i][j].getValeur() == 0) {</b>
+<b class="fc"><i>174</i>&nbsp;                    isOver = false;</b>
+<i>175</i>&nbsp;                }
+<b class="fc"><i>176</i>&nbsp;                if (i &gt; 0 &amp;&amp; grille[i][j].getValeur() == grille[i - 1][j].getValeur()) {</b>
+<b class="fc"><i>177</i>&nbsp;                    isOver = false;</b>
+<i>178</i>&nbsp;                }
+<b class="fc"><i>179</i>&nbsp;                if (i &lt; size - 1 &amp;&amp; grille[i][j].getValeur() == grille[i + 1][j].getValeur()) {</b>
+<b class="fc"><i>180</i>&nbsp;                    isOver = false;</b>
+<i>181</i>&nbsp;                }
+<b class="fc"><i>182</i>&nbsp;                if (j &gt; 0 &amp;&amp; grille[i][j].getValeur() == grille[i][j - 1].getValeur()) {</b>
+<b class="fc"><i>183</i>&nbsp;                    isOver = false;</b>
+<i>184</i>&nbsp;                }
+<b class="fc"><i>185</i>&nbsp;                if (j &lt; size - 1 &amp;&amp; grille[i][j].getValeur() == grille[i][j + 1].getValeur()) {</b>
+<b class="fc"><i>186</i>&nbsp;                    isOver = false;</b>
+<i>187</i>&nbsp;                }
+<i>188</i>&nbsp;            }
+<i>189</i>&nbsp;        }
+<b class="fc"><i>190</i>&nbsp;        return isOver;</b>
+<i>191</i>&nbsp;    }
+<i>192</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-12-02 17:05</div>
+</div>
+</body>
+</html>
